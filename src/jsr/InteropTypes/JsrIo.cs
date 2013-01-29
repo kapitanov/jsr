@@ -30,7 +30,7 @@ namespace JavaScript.Runtime.InteropTypes
         {
             try
             {
-                var fullPath = PathHelper.ResolveWritePath(path, ".json");
+                var fullPath = PathHelper.ResolveWritePath(path);
                 if (fullPath == null)
                 {
                     return false;
@@ -45,7 +45,7 @@ namespace JavaScript.Runtime.InteropTypes
             }
         }
 
-        public object readobj(string path)
+        public object read_json(string path)
         {
             try
             {
@@ -67,11 +67,11 @@ namespace JavaScript.Runtime.InteropTypes
             }
         }
 
-        public bool writeobj(string path, object obj)
+        public bool write_json(string path, object obj)
         {
             try
             {
-                var fullPath = PathHelper.ResolveWritePath(path, ".json");
+                var fullPath = PathHelper.ResolveWritePath(path);
                 if (fullPath == null)
                 {
                     return false;

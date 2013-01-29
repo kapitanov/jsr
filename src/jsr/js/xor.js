@@ -51,7 +51,7 @@ function run(settings) {
     }
 
     jsr.con.print('Writing weights matrix... ');
-    jsr.io.writeobj('xor-weights', network.weights);
+    jsr.io.write_json('xor-weights', network.weights);
     jsr.con.print('done\n');
 }
 
@@ -77,7 +77,19 @@ function parseArgs() {
     };
 }
 
+jsr.con.print('con: print');
+jsr.con.warn('con: warn');
+jsr.con.error('con: error');
+
+jsr.con.set_foreground(jsr.con.RED);
+jsr.con.print('jsr+encog:xor');
 jsr.lib.import('js/lib/encog');
+jsr.con.set_foreground(jsr.con.CYAN);
 var settings = parseArgs();
+
+jsr.con.print("hit any key to start...");
+jsr.con.readln();
+
 run(settings);
+jsr.con.set_foreground(jsr.con.WHITE);
 jsr.exit(0);

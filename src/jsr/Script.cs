@@ -24,7 +24,8 @@ namespace JavaScript.Runtime
             var typeSystem = new JsrTypeSystem(
                    new JsrConsole(this),
                    new JsrLibrary(this),
-                   new JsrIo()
+                   new JsrIo(),
+                   new JsrUtil()
                    );
 
             _context.SetParameter("jsr", typeSystem);

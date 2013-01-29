@@ -30,19 +30,13 @@ namespace JavaScript.Runtime
             return resolvedPathes.FirstOrDefault();
         }
 
-        public static string ResolveWritePath(string path, string ext)
+        public static string ResolveWritePath(string path)
         {
             if (!Path.IsPathRooted(path))
             {
                 path = Path.Combine(Directory.GetCurrentDirectory(), path);
             }
-
-            var actualExt = Path.GetExtension(path);
-            if (!string.Equals(actualExt, ext, StringComparison.InvariantCultureIgnoreCase))
-            {
-                path = Path.ChangeExtension(path, ext);
-            }
-
+            
             var dir = Path.GetDirectoryName(path);
             if (!Directory.Exists(dir))
             {

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>JavaScript.Runtime.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -55,10 +58,12 @@
   <ItemGroup>
     <Compile Include="ConsoleHelper.cs" />
     <Compile Include="InteropTypes\JsrConsole.cs" />
+    <Compile Include="InteropTypes\JsrConsoleCursor.cs" />
     <Compile Include="InteropTypes\JsrHelper.cs" />
     <Compile Include="InteropTypes\JsrIo.cs" />
     <Compile Include="InteropTypes\JsrLibrary.cs" />
     <Compile Include="InteropTypes\JsrTypeSystem.cs" />
+    <Compile Include="InteropTypes\JsrUtil.cs" />
     <Compile Include="JsrException.cs" />
     <Compile Include="PathHelper.cs" />
     <Compile Include="Program.cs" />
@@ -70,6 +75,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\lib\conui.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="js\sample.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="js\lib\_jsr.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

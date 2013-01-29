@@ -7,7 +7,7 @@ namespace JavaScript.Runtime
     {
         public static string LoadScript(string scriptPath, bool throwExceptionIfNotFound = true)
         {
-            var fullPath = PathHelper.ResolveReadPath(scriptPath, ".js");
+            var fullPath = PathHelper.ResolveReadPath(scriptPath, ".jsr", ".js");
             if (fullPath == null)
             {
                 if (!throwExceptionIfNotFound)
