@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<project name="jsr"
+         default="run">
+  <property name="build.configuration"
+            value="Release"/>
+
+  <property name="path.solution"
+            value="${path::get-full-path('../jsr.sln')}"/>
+  <property name="path.output"
+            value="${path::get-full-path('../bin/build/' + build.configuration)}"/>
+  <property name="path.output.bin"
+            value="${path::get-full-path(path.output + '/binaries')}"/>
+  <property name="path.output.zip"
+            value="${path::get-full-path(path.output + '/jsr.zip')}"/>
+  <property name="path.msbuild"
+            value="${path::get-full-path(environment::get-variable('WinDir') + '\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe')}"/>
+  <property name="path.msbuild"
+            value="${framework::get-framework-directory('net-4.0')}/msbuild.exe"/>
+
+  <target name="clean">
+    <echo message="## Cleaning build directory..."/>
+    <delete>
+      <fileset>
+        <include name="${path.output}/**"/>
+      </fileset>
+    </delete>
+  </target>
+
+  <target name="prepare"
+          depends="clean">
+    <echo message="## Preparing build directory..."/>
+    <mkdir dir="${path.output}" />
+    <mkdir dir="${path.output.bin}" />
+  </target>
+
+  <target name="build"
+          depends="prepare">
+    <echo message="## Building project..."/>
+    <exec program="${path.msbuild}">
+      <arg value="${path.solution}" />
+      <arg value="/t:Rebuild" />
+      <arg value="/p:OutDir=${path.output.bin}" />
+      <arg value="/p:Configuration=${build.configuration}" />
+    </exec>
+  </target>
+  
+  
+  <target name="package"
+          depends="build">
+    <echo message="## Packaging project..."/>
+  <zip zipfile="${path.output.zip}">
+    <fileset basedir="${path.output.bin}" prefix="jsr">
+        <include name="**/*.exe" />
+        <include name="**/*.dll" />
+        <include name="**/*.js" />
+    </fileset>
+</zip>
+
+  </target>
+
+  <target name="run"
+          depends="build, package">
+    <echo message="## Completed"/>
+  </target>
+</project>

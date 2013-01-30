@@ -1,0 +1,1 @@
+@".build/nant/nant.exe" -buildfile:".build/jsr.build"
