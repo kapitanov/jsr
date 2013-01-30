@@ -5,16 +5,34 @@ namespace JavaScript.Runtime.InteropTypes
     // ReSharper disable InconsistentNaming
     public sealed class JsrConsoleCursor
     {
-        public int x
+        public int x()
         {
-            get { return Console.CursorLeft; }
-            set { Console.CursorLeft = value; }
+            return Console.CursorLeft;  
         }
 
-        public int y
+        public void x(int value)
         {
-            get { return Console.CursorTop; }
-            set { Console.CursorTop = value; }
+            Console.CursorLeft = value; 
+        }
+
+        public int y()
+        {
+            return Console.CursorTop;
+        }
+
+        public void y(int value)
+        {
+            Console.CursorTop = value;
+        }
+
+        public bool visible()
+        {
+            return Console.CursorVisible;
+        }
+
+        public void visible(bool value)
+        {
+            Console.CursorVisible = value;
         }
     }
 }

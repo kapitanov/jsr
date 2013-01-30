@@ -114,22 +114,22 @@ namespace JavaScript.Runtime.InteropTypes
         public string WHITE { get { return WhiteColor; } }
         public string BLACK { get { return BlackColor; } }
 
-        public string get_foreground()
+        public string foreground()
         {
             return GetColorName(Console.ForegroundColor);
         }
 
-        public string get_background()
+        public string background()
         {
             return GetColorName(Console.BackgroundColor);
         }
 
-        public void set_foreground(string color)
+        public void foreground(string color)
         {
             Console.ForegroundColor = ParseColor(color);
         }
 
-        public void set_background(string color)
+        public void background(string color)
         {
             Console.BackgroundColor = ParseColor(color);
         }

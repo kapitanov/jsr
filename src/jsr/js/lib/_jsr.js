@@ -58,25 +58,32 @@ var jsr = {
         DARK_GRAY: 'dark-gray',
         WHITE: 'white',
         BLACK: 'black',
-        get_foreground: function() {
-            /// <summary>Returns console foreground color</summary>
+        foreground: function (color) {
+            /// <summary>Gets and Sets console foreground color</summary>
+            /// <param name="message" type="String">Color name</param>
             /// <returns type="String" />
         },
-        get_background: function () {
-            /// <summary>Returns console background color</summary>
+        background: function (color) {
+            /// <summary>Gets and sets console background color</summary>
+            /// <param name="message" type="String">Color name</param>
             /// <returns type="String" />
-        },
-        set_foreground: function (color) {
-            /// <summary>Sets console foreground color</summary>
-            /// <param name="message" type="String">Color name</param>
-        },
-        set_background: function (color) {
-            /// <summary>Sets console background color</summary>
-            /// <param name="message" type="String">Color name</param>
         },
         cursor: {
-            x: 0,
-            y: 0
+            x: function (value) {
+                /// <summary>Gets and sets console cursor x coordinate</summary>
+                /// <param name="value" type="Integer">Coordinate value</param>
+                /// <returns type="Integer" />
+            },
+            y: function (value) {
+                /// <summary>Gets and sets console cursor y coordinate</summary>
+                /// <param name="value" type="Integer">Coordinate value</param>
+                /// <returns type="Integer" />
+            },
+            visible: function (value) {
+                /// <summary>Gets and sets console cursor visibility</summary>
+                /// <param name="value" type="Boolean">Cursor visibility</param>
+                /// <returns type="Boolean" />
+            }
         }
     },
     lib: {

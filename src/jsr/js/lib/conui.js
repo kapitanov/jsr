@@ -21,7 +21,6 @@ var conui;
 
         var selectedIndex = 0;
         while (true) {
-            
             // print menu
             jsr.con.clear();
 
@@ -30,10 +29,10 @@ var conui;
 
             for (var i = 0; i < items.length; i++) {
                 if (i == selectedIndex) {
-                    jsr.con.set_foreground(jsr.con.CYAN);
+                    jsr.con.foreground(jsr.con.CYAN);
                     jsr.con.print(' [x] ');
                 } else {
-                    jsr.con.set_foreground(jsr.con.WHITE);
+                    jsr.con.foreground(jsr.con.WHITE);
                     jsr.con.print(' [ ] ');
                 }
 
@@ -41,7 +40,7 @@ var conui;
                 jsr.con.print('\n');
             }
             
-            jsr.con.set_foreground(jsr.con.WHITE);
+            jsr.con.foreground(jsr.con.WHITE);
             jsr.con.print('\n');
 
             var key = jsr.con.read();
