@@ -25,7 +25,8 @@ namespace JavaScript.Runtime
                    new JsrConsole(this),
                    new JsrLibrary(this),
                    new JsrIo(),
-                   new JsrUtil()
+                   new JsrUtil(),
+                   new JsrHttp()
                    );
 
             _context.SetParameter("jsr", typeSystem);

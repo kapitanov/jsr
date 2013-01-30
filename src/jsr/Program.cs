@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace JavaScript.Runtime
 {
@@ -10,6 +11,11 @@ namespace JavaScript.Runtime
             {
                 var script = new Script(args);
                 script.Run();
+
+                if (Debugger.IsAttached)
+                {
+                    Console.ReadLine();
+                }
             }
             catch (JsrException exception)
             {

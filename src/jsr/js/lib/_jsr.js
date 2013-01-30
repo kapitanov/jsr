@@ -95,6 +95,14 @@ var jsr = {
             /// <returns type="Object" />
         }
     },
+    http: {
+        get: function (url, args) {
+            /// <summary>Loads a string via HTTP GET</summary>
+            /// <param name="url" type="String">URL</param>
+            /// <param name="args" type="Object">GET parameters</param>
+            /// <returns type="String" />
+        }
+    },
     io: {
         read: function(path) {
             /// <summary>Reads file's content as text</summary>
@@ -126,6 +134,18 @@ var jsr = {
             /// <returns type="Object" />
         },
         format_json: function (obj) {
+            /// <summary>Formats object as JSON string</summary>
+            /// <param name="obj" type="Object">Object</param>
+            /// <returns type="Boolean" />
+        }
+    },
+    json: {
+        parse: function (json) {
+            /// <summary>Parsed object from JSON string</summary>
+            /// <param name="json" type="String">JSON string</param>
+            /// <returns type="Object" />
+        },
+        stringify: function (obj) {
             /// <summary>Formats object as JSON string</summary>
             /// <param name="obj" type="Object">Object</param>
             /// <returns type="Boolean" />

@@ -1,0 +1,13 @@
+﻿<jsr>
+  <program src="sample.js">
+    <args>
+      <arg name="filename">input.txt</arg>
+      <arg name="index"
+           value="123" />
+    </args>
+    <libs>
+      <lib src="jsr://lib/json"/>
+      <lib src="sample_ext.js"/>
+    </libs>
+  </program>
+</jsr>
