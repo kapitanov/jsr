@@ -9,6 +9,14 @@ namespace JavaScript.Runtime
         {
             try
             {
+
+                // CommandLineParser tests
+                var p = CommandLineParser.Parse("/x=1 /y=\"abc\" script /x=231! /zyx");
+               var p1 = CommandLineParser.Parse("/x=1 /y=\"abc\" script");
+               var p2 = CommandLineParser.Parse("script /x=231! /zyx");
+               var p3 = CommandLineParser.Parse("script");
+               var p4 = CommandLineParser.Parse("");
+
                 var script = new Script(args);
                 script.Run();
 

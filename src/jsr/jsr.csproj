@@ -56,6 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandLineParameter.cs" />
+    <Compile Include="CommandLineParameters.cs" />
+    <Compile Include="CommandLineParser.cs" />
     <Compile Include="ConsoleHelper.cs" />
     <Compile Include="InteropTypes\JsrConsole.cs" />
     <Compile Include="InteropTypes\JsrConsoleCursor.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="ScriptLoader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jetbrains.Annotations.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
