@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using JavaScript.Runtime.Execution;
+using JavaScript.Runtime.Startup;
+using JavaScript.Runtime.Util;
 
 namespace JavaScript.Runtime
 {
@@ -9,29 +12,58 @@ namespace JavaScript.Runtime
         {
             try
             {
-                var script = new Script(args);
-                script.Run();
+                Run(args);
 
                 if (Debugger.IsAttached)
                 {
+                    using (ConsoleHelper.Foreground(ConsoleColor.DarkGray))
+                    {
+                        Console.WriteLine("Press <Enter> to exit...");
+                    }
+
                     Console.ReadLine();
                 }
             }
-            catch (JsrException exception)
+            catch (JsrStartupException exception)
             {
-                using (ConsoleHelper.Foreground(ConsoleColor.Red))
-                {
-                    Console.WriteLine("jsr: {0}", exception.Message);
-                    if (exception.InnerException != null)
-                    {
-                        Console.WriteLine(exception.InnerException.Message);
-                    }
+                PrintError("jsr-startup", exception);
+            }
+            catch (JsrRuntimeException exception)
+            {
+                PrintError("jsr", exception);
+            }
+            catch (Exception exception)
+            {
+                PrintError("runtime", exception);
+            }
+        }
 
-                    Console.WriteLine();
+        private static void Run(string[] args)
+        {
+            var commandLine = CommandLineParser.Parse(args);
+
+            var applicationDefinition = ApplicationDefinitionLoader.FromCommandLine(commandLine);
+
+            using (var application = new Application(applicationDefinition))
+            {
+                application.Run();
+            }
+        }
+
+        private static void PrintError(string source, Exception exception)
+        {
+            using (ConsoleHelper.Foreground(ConsoleColor.Red))
+            {
+                Console.WriteLine("{0}: {1}", source, exception.Message);
+                if (exception.InnerException != null)
+                {
+                    Console.WriteLine(exception.InnerException.Message);
                 }
 
-                Environment.Exit(-1);
+                Console.WriteLine();
             }
+
+            Environment.Exit(-1);
         }
     }
 }

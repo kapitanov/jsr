@@ -1,13 +1,15 @@
 ﻿<jsr>
-  <program src="sample.js">
-    <args>
-      <arg name="filename">input.txt</arg>
-      <arg name="index"
+  <program path="sample.js">
+    <arguments>
+      <argument name="filename">input.txt</argument>
+      <argument name="index"
            value="123" />
-    </args>
-    <libs>
-      <lib src="jsr://lib/json"/>
-      <lib src="sample_ext.js"/>
-    </libs>
+      <flag name=""/>
+    </arguments>
   </program>
+  <runtime>
+    <libraries>
+      <!--<library path="jsr://lib/conui.js"/>-->
+    </libraries>
+  </runtime>
 </jsr>

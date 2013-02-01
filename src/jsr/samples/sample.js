@@ -1,8 +1,7 @@
-﻿/// <reference path="/lib/_jsr.js"/>
+﻿/// <reference path="../lib/_jsr.js"/>
 "use strict";
 
-jsr.lib.import('js/lib/conui');
-jsr.lib.import('js/lib/json');
+var conui = jsr.lib.import('jsr://lib/conui.js');
 
 function sample_json() {
     jsr.con.warn(":: JSON string formatting ::\n\n");

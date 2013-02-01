@@ -4,21 +4,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6B0F6B49-DB70-4F94-BDED-0DC177F46E56}</ProjectGuid>
+    <ProjectGuid>{E61768F0-E100-4410-BDCE-62EF3A72787C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JavaScript.Runtime</RootNamespace>
-    <AssemblyName>jsr.test</AssemblyName>
+    <AssemblyName>jsr.lib.base</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\debug\tests\</OutputPath>
+    <OutputPath>..\..\bin\debug\exts\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,17 +25,15 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\release\tests\</OutputPath>
+    <OutputPath>..\..\bin\release\exts\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,20 +42,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Startup\CommandLineParserTest.cs" />
+    <Compile Include="TypeSystem\JsrAppInterop.cs" />
+    <Compile Include="TypeSystem\JsrAppTypeSystem.cs" />
+    <Compile Include="TypeSystem\JsrConsoleTypeSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeSystem\JsrConsoleInterop.cs" />
+    <Compile Include="TypeSystem\JsrConsoleCursorInterop.cs" />
+    <Compile Include="TypeSystem\JsrHttpInterop.cs" />
+    <Compile Include="TypeSystem\JsrHttpTypeSystem.cs" />
+    <Compile Include="TypeSystem\JsrIoInterop.cs" />
+    <Compile Include="TypeSystem\JsrIoTypeSystem.cs" />
+    <Compile Include="TypeSystem\JsrJsonTypeSystem.cs" />
+    <Compile Include="TypeSystem\JsrLibTypeSystem.cs" />
+    <Compile Include="TypeSystem\Scripts.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\jsr.core\jsr.core.csproj">
-      <Project>{12c37e3b-9134-4e41-8d44-e139580510ae}</Project>
+    <ProjectReference Include="..\jsr.core\jsr.core.csproj">
+      <Project>{12C37E3B-9134-4E41-8D44-E139580510AE}</Project>
       <Name>jsr.core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\jsr.lib.js" />
+    <EmbeddedResource Include="Scripts\jsr.json.js" />
+    <EmbeddedResource Include="Scripts\jsr.io.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,5 +1,5 @@
-﻿/// <reference path="/lib/_jsr.js"/>
-/// <reference path="/lib/encog.js"/>
+﻿/// <reference path="../lib/_jsr.js"/>
+/// <reference path="../lib/encog.js"/>
 
 function run(settings) {
     var XOR_INPUT = [
