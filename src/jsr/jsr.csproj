@@ -66,6 +66,12 @@
     <Content Include="lib\conui.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="lib\threshold_logic.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\threshold_logic.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="samples\sample.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

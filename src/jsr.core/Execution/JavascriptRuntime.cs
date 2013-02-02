@@ -33,8 +33,22 @@ namespace JavaScript.Runtime.Execution
 
         public object EvaluateJavascript(string source)
         {
-            var result = _context.Run(source);
-            return result;
+            try
+            {
+                var result = _context.Run(source);
+                return result;
+            }
+            catch (JavascriptException exception)
+            {
+                throw new JsrRuntimeException(
+                    string.Format(
+                        "{0} at ({1}, {2} - {3})",
+                        exception.Message,
+                        exception.Line, 
+                        exception.StartColumn,
+                        exception.EndColumn),
+                    exception);
+            }
         }
 
         public void RegisterInteropObject(string name, object interopObject)
